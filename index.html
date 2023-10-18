@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to left, black, white);
+    background-size: cover;
+    background-position: center;
+  }
+  .wrapper{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(9px);
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px 40px;
+  }
+  .wrapper h1{
+    font-size: 36px;
+    text-align: center;
+  }
+  .wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    
+    margin: 30px 0;
+  }
+  .input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+  }
+  .input-box input::placeholder{
+    color: #fff;
+  }
+  p{
+    color: red;
+  }
+  .input-box i{
+    position: absolute;
+    right: 20px;
+    top: 30%;
+    transform: translate(-50%);
+    font-size: 20px;
+  
+  }
+  
+  .wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+  }
+    
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="signup">
+        <form action="">
+          <h1>Sign Up</h1>
+          <div class="input-box">
+            <input type="name" placeholder="Username" id="newName" required>
+            <p id="newNameErrMsg"></p>
+          </div>
+          <div class="input-box">
+            <input type="email" placeholder="Email" id="newEmail" required>
+            <p id="newEmailErrMsg"></p>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Password" id="newPassword" required>
+            <p id="newPasswordErrMsg"></p>
+          </div>
+          <button type="submit" class="btn" id="signupButton">Sign Up</button>
+          <div class="register-link">
+            <p>Already have an account? <a href="login.html">Log In</a></p>
+          </div>
+        </form>
+      </div>
+      <script >
+        let updatePasswordFormEl = document.getElementById("signup");
+
+        let newNameEl = document.getElementById("newName");
+let newNameErrMsgEl = document.getElementById("newNameErrMsg");
+
+let newEmailEl = document.getElementById("newEmail");
+let newEmailErrMsgEl = document.getElementById("newEmailErrMsg")
+
+let newPasswordEl = document.getElementById("newPassword");
+let newPasswordErrMsgEl = document.getElementById("newPasswordErrMsg");
+
+
+
+let validateNewName = function() {
+    if (newNameEl.value === "") {
+        newNameErrMsgEl.textContent = "Enter Name";
+    } else {
+        newNameErrMsgEl.textContent = "";
+    }
+};
+
+let validateNewPassword = function() {
+    if (newPasswordEl.value === "") {
+        newPasswordErrMsgEl.textContent = "Enter PassWord";
+    } else {
+        newPasswordErrMsgEl.textContent = "";
+    }
+};
+
+let validateNewEmail = function() {
+    
+    if (newEmailEl.value === "") {
+        newEmailErrMsgEl.textContent = "Enter Email";
+    } else {
+       newEmailErrMsgEl.textContent = "";
+    }
+
+};
+
+newNameEl.addEventListener("blur", validateNewName);
+newNameEl.addEventListener("blur", validateNewEmail);
+newPasswordEl.addEventListener("blur", validateNewPassword);
+
+
+updatePasswordFormEl.addEventListener("submit", function(event) {
+    event.preventDefault();
+    validateNewName();
+    validateNewEmail();
+    validateNewPassword();
+    window.location.href="login.html";
+});
+      </script>
+</body>
+</html>
